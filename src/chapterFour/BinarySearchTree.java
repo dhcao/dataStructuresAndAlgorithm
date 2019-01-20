@@ -126,15 +126,37 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 		return null;
 	}
 
-	private T findMax(BinaryNode<T> root) {
-		// todo
-		return null;
+	/**
+	 * 我们不使用递归，加判断的递归，可以用while循环
+	 * @param root
+	 * @return
+	 */
+	private BinaryNode<T> findMax(BinaryNode<T> root) {
+
+		if (root == null) {
+			return null;
+		}
+
+		while (root.right != null){
+			root = root.right;
+		}
+		return root;
 	}
 
-
-	private T findMin(BinaryNode<T> root) {
-		//todo
-		return null;
+	/**
+	 * 我们用递归的方法，遍历所有的左子树，直到最后。
+	 * @param root
+	 * @return
+	 */
+	private BinaryNode<T> findMin(BinaryNode<T> root) {
+		if(root == null){
+			return null;
+		}
+		if(root.left == null){
+			return root;
+		}else{
+			return findMin(root.left);
+		}
 	}
 
 	/**
