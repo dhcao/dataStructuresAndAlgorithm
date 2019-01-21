@@ -121,9 +121,31 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 		return null;
 	}
 
+	/**
+	 * 查找树的插入，其实很简单，就一直的递归，然后插入就好了。
+	 * @param t
+	 * @param root
+	 * @return
+	 */
 	private BinaryNode<T> insert(T t, BinaryNode<T> root) {
-		// todo
-		return null;
+
+		// 如果树不存在就创建一棵树
+		if(root == null){
+			return new BinaryNode<>(t,null,null);
+		}
+		int compareResult = t.compareTo(root.element);
+
+		// 如果比root小，就插入到root的左边
+		if(compareResult < 0){
+			root.left = insert(t,root.left);
+		}
+		// 如果比root大，就插入到root的右边
+		if(compareResult > 0){
+			root.right = insert(t,root.right);
+		}
+		// 最后返回树
+		return root;
+
 	}
 
 	/**
