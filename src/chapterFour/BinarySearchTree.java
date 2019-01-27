@@ -8,6 +8,8 @@ import java.nio.BufferUnderflowException;
  */
 public class BinarySearchTree<T extends Comparable<? super T>> {
 
+	private BinaryNode<T> root1;
+
 	/**
 	 * 节点类
 	 *
@@ -116,13 +118,40 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 	}
 
 
+	/**
+	 * 删除方法：
+	 * 删除一个节点，如果是叶子节点，那么直接删除就好了，但是如果是某个父节点，那么需要重组部分树节点。
+	 *
+	 * @param t
+	 * @param root
+	 * @return
+	 */
 	private BinaryNode<T> remove(T t, BinaryNode<T> root) {
-		// todo
-		return null;
+
+		if (root == null) {
+			return root;
+		}
+
+		int compareResult = t.compareTo(root.element);
+
+		if (compareResult < 0) {
+			root.left = remove(t, root.left);
+		} else if (compareResult > 0) {
+			root.right = remove(t, root.right);
+		} else if (root.left != null && root.right != null) {
+			root.element = findMin(root.right).element;
+			root.right = remove(root.element, root.right);
+		} else {
+
+			root = (root.left != null) ? root.left : root.right;
+		}
+		return root;
+
 	}
 
 	/**
 	 * 查找树的插入，其实很简单，就一直的递归，然后插入就好了。
+	 *
 	 * @param t
 	 * @param root
 	 * @return
@@ -130,18 +159,18 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 	private BinaryNode<T> insert(T t, BinaryNode<T> root) {
 
 		// 如果树不存在就创建一棵树
-		if(root == null){
-			return new BinaryNode<>(t,null,null);
+		if (root == null) {
+			return new BinaryNode<>(t, null, null);
 		}
 		int compareResult = t.compareTo(root.element);
 
 		// 如果比root小，就插入到root的左边
-		if(compareResult < 0){
-			root.left = insert(t,root.left);
+		if (compareResult < 0) {
+			root.left = insert(t, root.left);
 		}
 		// 如果比root大，就插入到root的右边
-		if(compareResult > 0){
-			root.right = insert(t,root.right);
+		if (compareResult > 0) {
+			root.right = insert(t, root.right);
 		}
 		// 最后返回树
 		return root;
@@ -150,6 +179,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
 	/**
 	 * 我们不使用递归，加判断的递归，可以用while循环
+	 *
 	 * @param root
 	 * @return
 	 */
@@ -159,7 +189,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 			return null;
 		}
 
-		while (root.right != null){
+		while (root.right != null) {
 			root = root.right;
 		}
 		return root;
@@ -167,16 +197,17 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
 	/**
 	 * 我们用递归的方法，遍历所有的左子树，直到最后。
+	 *
 	 * @param root
 	 * @return
 	 */
 	private BinaryNode<T> findMin(BinaryNode<T> root) {
-		if(root == null){
+		if (root == null) {
 			return null;
 		}
-		if(root.left == null){
+		if (root.left == null) {
 			return root;
-		}else{
+		} else {
 			return findMin(root.left);
 		}
 	}
