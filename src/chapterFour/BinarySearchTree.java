@@ -8,7 +8,6 @@ import java.nio.BufferUnderflowException;
  */
 public class BinarySearchTree<T extends Comparable<? super T>> {
 
-	private BinaryNode<T> root1;
 
 	/**
 	 * 节点类
@@ -43,7 +42,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 	}
 
 	/**
-	 * 清空
+	 * 清空整颗树
 	 */
 	public void makeEmpty() {
 		root = null;
@@ -114,7 +113,11 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 	 * 打印全部
 	 */
 	public void printTree() {
-		// todo
+		if (isEmpty()) {
+			System.out.println("Empty tree");
+		}else{
+			printTree(root);
+		}
 	}
 
 
@@ -178,6 +181,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 	}
 
 	/**
+	 * 寻找最大值（方法一，用循环代替递归）
 	 * 我们不使用递归，加判断的递归，可以用while循环
 	 *
 	 * @param root
@@ -196,6 +200,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 	}
 
 	/**
+	 * 寻找最小值（方法二，直接使用递归）
 	 * 我们用递归的方法，遍历所有的左子树，直到最后。
 	 *
 	 * @param root
@@ -235,8 +240,16 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 		}
 	}
 
-	public void printTrees(BinaryNode<T> tb) {
-		// todo
+	/**
+	 * 按照顺序打印二叉树：中序遍历
+	 * @param tb
+	 */
+	private void printTree(BinaryNode<T> tb) {
+		if (tb !=null) {
+			printTree(tb.left);
+			System.out.println(tb.element);
+			printTree(tb.right);
+		}
 	}
 
 }
