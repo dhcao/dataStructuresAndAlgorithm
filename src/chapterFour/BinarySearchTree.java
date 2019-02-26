@@ -115,7 +115,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 	public void printTree() {
 		if (isEmpty()) {
 			System.out.println("Empty tree");
-		}else{
+		} else {
 			printTree(root);
 		}
 	}
@@ -242,10 +242,11 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
 	/**
 	 * 按照顺序打印二叉树：中序遍历
+	 *
 	 * @param tb
 	 */
 	private void printTree(BinaryNode<T> tb) {
-		if (tb !=null) {
+		if (tb != null) {
 			printTree(tb.left);
 			System.out.println(tb.element);
 			printTree(tb.right);
