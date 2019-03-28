@@ -1,7 +1,8 @@
 package chapterSeven;
 
 /**
- * 堆排序
+ * 堆排序：跟二叉堆的最小值优先不一样，为了满足排序时的升序顺序，
+ * 我们调整二叉堆为最大值优先，并且从0开始记数组。
  *
  * @Author: dhcao
  * @Version: 1.0
@@ -70,7 +71,7 @@ public class HeasportEx<T extends Comparable<? super T>> {
 
 	/**
 	 * 删除最大值
-	 *
+	 * 并将最大值放到最后一个位置上
 	 * @param a   二叉堆
 	 * @param i   删除位置
 	 * @param n   堆大小
