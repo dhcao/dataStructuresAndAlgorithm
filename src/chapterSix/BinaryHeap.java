@@ -124,6 +124,9 @@ public class BinaryHeap<T extends Comparable<? super T>> {
 		array[hole] = tmp;
 	}
 
+	/**
+	 * 构建
+	 */
 	private void buildHeap() {
 		for (int i = currentSize / 2; i > 0; i--) {
 			percolateDown(i);
