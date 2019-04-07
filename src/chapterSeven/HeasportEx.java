@@ -70,11 +70,7 @@ public class HeasportEx<T extends Comparable<? super T>> {
 	}
 
 	/**
-	 * 删除最大值
-	 * 并将最大值放到最后一个位置上
-	 * @param a   二叉堆
-	 * @param i   删除位置
-	 * @param n   堆大小
+	 * 交换位置
 	 * @param <T>
 	 */
 	public static <T extends Comparable<? super T>> void swapReferences(T[] a, int i, int n) {
