@@ -81,11 +81,10 @@ public class HeasportEx<T extends Comparable<? super T>> {
 		T tmp = a[i];
 		a[i] = a[n];
 		a[n] = tmp;
-		percDown(a, i, n);
 	}
 
 	public static void main(String[] args) {
-		Integer[] aaa = {1,5,2,5,8,4,6,3,0};
+		Integer[] aaa = {1,5,2,5,3,4,6,3,7};
 		for (int i = 0; i < aaa.length; i++) {
 			System.out.print(aaa[i]+" ");
 		}
