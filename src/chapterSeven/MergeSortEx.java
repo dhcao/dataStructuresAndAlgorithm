@@ -8,7 +8,7 @@ package chapterSeven;
  * @Author: dhcao
  * @Version: 1.0
  */
-public class MegeSortEx<T extends Comparable<? super T>> {
+public class MergeSortEx<T extends Comparable<? super T>> {
 
 
 	/**
